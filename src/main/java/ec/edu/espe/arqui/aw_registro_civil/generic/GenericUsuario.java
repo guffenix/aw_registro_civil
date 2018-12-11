@@ -7,6 +7,7 @@ import java.util.Date;
  *
  * @author guffenix
  */
+
 public class GenericUsuario {
     private String identificacion;
     private String nombre;
