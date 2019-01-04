@@ -6,6 +6,7 @@
 package ec.edu.espe.arqui.aw_registro_civil.respuesta;
 
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import ec.edu.espe.arqui.aw_registro_civil.generic.LugarNacimiento;
 import ec.edu.espe.arqui.aw_registro_civil.generic.Persona;
 import java.util.Date;
@@ -26,24 +27,27 @@ public class NewMain {
         Persona persona=new Persona();
         final Morphia morphia = new Morphia();
         morphia.mapPackage("ec.edu.espe.arqui.aw_registro_civil.generic");
-        final Datastore datastore = morphia.createDatastore(new MongoClient("192.168.99.100",32768), "REGISTRO_CIVIL");
+        //final Datastore datastore = morphia.createDatastore(new MongoClient("192.168.99.100",32768), "REGISTRO_CIVIL");
         //datastore.ensureIndexes();
         
-        persona.setApellido("Tipan Sosa");
+        MongoClient mongoClient = new MongoClient(new MongoClientURI("mongodb://arqui-mongo:FArzQZ1QdaCwnWShL1GoHouEkglhOnj4Uslv7fIMAL6aZwIxVwCUcDCNzAJHaio9fdTYeTgfFO143WgyXyFAtQ==@arqui-mongo.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"));
+        final Datastore datastore = morphia.createDatastore(mongoClient, "REGISTRO_CIVIL");
+        
+        persona.setApellido("Guaman Orta");
         persona.setEstado(Boolean.TRUE);
         persona.setEstadoCivil("SOL");
         persona.setFechaNacimiento(new Date());
-        persona.setGenero("F");
+        persona.setGenero("M");
         LugarNacimiento nacimiento=new LugarNacimiento();
-        persona.setIdentificacion("1716151413");
-        nacimiento.setProvincia("Pichicnha");
-        nacimiento.setCanton("Quito");
-        nacimiento.setParroquia("Tumbaco");
+        persona.setIdentificacion("1234567890");
+        nacimiento.setProvincia("Los Ríos");
+        nacimiento.setCanton("Quevedo");
+        nacimiento.setParroquia("San Camilo");
         persona.setLugarNacimiento(nacimiento);
         persona.setNacionalidad("Ecuatoriana");
-        persona.setNombre("Karen Ana");
-        persona.setTelefono("0987654321");
-        persona.setEmail("kat@espe.edu.ec");
+        persona.setNombre("Steven Juan");
+        persona.setTelefono("0990872645");
+        persona.setEmail("sjguaman@espe.edu.ec");
         datastore.save(persona);
         
     }

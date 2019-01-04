@@ -146,29 +146,11 @@ public class Persona {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.identificacion);
-        return hash;
+    public String toString() {
+        return "Persona{" + "id=" + id + ", identificacion=" + identificacion + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono=" + telefono + ", email=" + email + ", fechaNacimiento=" + fechaNacimiento + ", nacionalidad=" + nacionalidad + ", genero=" + genero + ", estadoCivil=" + estadoCivil + ", estado=" + estado + ", lugarNacimiento=" + lugarNacimiento + '}';
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Persona other = (Persona) obj;
-        if (!Objects.equals(this.identificacion, other.identificacion)) {
-            return false;
-        }
-        return true;
-    }
+    
     
     
     

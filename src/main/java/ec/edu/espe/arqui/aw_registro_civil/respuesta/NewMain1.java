@@ -25,14 +25,18 @@ public class NewMain1 {
         final Morphia morphia = new Morphia();
         morphia.mapPackage("ec.edu.espe.arqui.aw_registro_civil.generic");
         final Datastore datastore = morphia.createDatastore(new MongoClient("192.168.99.100",32768), "REGISTRO_CIVIL");
+        Query<Persona> query=datastore.find(Persona.class).field("identificacion").equal("1712860533001");
+        // temp =  (Persona) query.get();
         
-        Query query=datastore.createQuery(Persona.class);
-        query.field("identificacion").equal("1716151413");
+//        Query<Persona> query=datastore.createQuery(Persona.class).disableValidation();
+//        query.field("identificacion").equal("1722020482001").asList();
+//        
+        
         
         if (query!=null) {
             temp=(Persona)query.get();
             
-            System.out.println("-> "+temp.getApellido());
+            System.out.println("->kkkk "+temp);
         }       
         
     }
